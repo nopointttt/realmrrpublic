@@ -131,6 +131,7 @@
         footer a { color: #888; text-decoration: none; transition: color 0.2s; }
         footer a:hover { color: #fff; }
         .loading { text-align: center; padding: 60px; color: #666; font-size: 16px; }
+        .error { text-align: center; padding: 60px; color: #ef4444; font-size: 16px; }
         @media (max-width: 768px) {
             h1 { font-size: 32px; }
             .leaderboard-table { font-size: 12px; }
@@ -169,70 +170,33 @@
         </p>
     </footer>
     <script>
-        const mockStartups = [
-            {
-                rank: 1,
-                medal: "🥇",
-                name: "БыстроЧиним",
-                slug: "startup.html",
-                description: "Платформа для быстрого поиска мастеров по мелкому ремонту. Помогаем управляющим компаниям и отелям находить проверенных специалистов.",
-                founder: "@nopointttt",
-                mrr: "150,000 ₽",
-                growth: 15,
-                totalRevenue: "1,800,000 ₽"
-            },
-            {
-                rank: 2,
-                medal: "🥈",
-                name: "Пример Стартап 2",
-                slug: "startup.html",
-                description: "SaaS платформа для автоматизации бизнес-процессов малого бизнеса в России.",
-                founder: "@founder2",
-                mrr: "95,000 ₽",
-                growth: 8,
-                totalRevenue: "950,000 ₽"
-            },
-            {
-                rank: 3,
-                medal: "🥉",
-                name: "Пример Стартап 3",
-                slug: "startup.html",
-                description: "Образовательная платформа для обучения программированию на русском языке.",
-                founder: "@founder3",
-                mrr: "75,000 ₽",
-                growth: -2,
-                totalRevenue: "600,000 ₽"
-            },
-            {
-                rank: 4,
-                medal: "",
-                name: "Пример Стартап 4",
-                slug: "startup.html",
-                description: "Маркетплейс цифровых услуг для фрилансеров и заказчиков из СНГ.",
-                founder: "@founder4",
-                mrr: "62,000 ₽",
-                growth: 12,
-                totalRevenue: "480,000 ₽"
-            },
-            {
-                rank: 5,
-                medal: "",
-                name: "Пример Стартап 5",
-                slug: "startup.html",
-                description: "AI-инструмент для генерации контента на русском языке для социальных сетей.",
-                founder: "@founder5",
-                mrr: "58,000 ₽",
-                growth: 22,
-                totalRevenue: "350,000 ₽"
-            }
-        ];
+        const API_URL = 'https://realmrr-api.nopoint.workers.dev';
+
+        function formatMoney(amount) {
+            return new Intl.NumberFormat('ru-RU').format(amount) + ' ₽';
+        }
+
+        function getMedal(rank) {
+            if (rank === 1) return '🥇';
+            if (rank === 2) return '🥈';
+            if (rank === 3) return '🥉';
+            return '';
+        }
+
         function formatGrowth(growth) {
             const className = growth >= 0 ? 'growth-positive' : 'growth-negative';
             const sign = growth >= 0 ? '+' : '';
             return `<span class="${className}">${sign}${growth}%</span>`;
         }
+
         function renderLeaderboard(startups) {
             const content = document.getElementById('leaderboard-content');
+            
+            if (!startups || startups.length === 0) {
+                content.innerHTML = '<div class="error">Нет данных о стартапах</div>';
+                return;
+            }
+
             const tableHTML = `
                 <table class="leaderboard-table">
                     <thead>
@@ -245,34 +209,57 @@
                         </tr>
                     </thead>
                     <tbody>
-                        ${startups.map(startup => `
-                            <tr>
-                                <td class="rank-cell">
-                                    ${startup.medal || `<span style="color: #444;">${startup.rank}</span>`}
-                                </td>
-                                <td class="startup-cell">
-                                    <div class="startup-name">
-                                        <a href="${startup.slug}" class="startup-link">${startup.name}</a>
-                                    </div>
-                                    <div class="startup-description">${startup.description}</div>
-                                </td>
-                                <td class="founder-cell">
-                                    <a href="#" class="founder-link">${startup.founder}</a>
-                                </td>
-                                <td class="mrr-cell">${startup.mrr}</td>
-                                <td class="growth-cell">${formatGrowth(startup.growth)}</td>
-                            </tr>
-                        `).join('')}
+                        ${startups.map((startup, index) => {
+                            const rank = startup.rank || index + 1;
+                            const medal = getMedal(rank);
+                            return `
+                                <tr>
+                                    <td class="rank-cell">
+                                        ${medal || `<span style="color: #444;">${rank}</span>`}
+                                    </td>
+                                    <td class="startup-cell">
+                                        <div class="startup-name">
+                                            <a href="startup.html?slug=${startup.slug}" class="startup-link">${startup.name}</a>
+                                        </div>
+                                        <div class="startup-description">${startup.description}</div>
+                                    </td>
+                                    <td class="founder-cell">
+                                        <a href="#" class="founder-link">${startup.founder}</a>
+                                    </td>
+                                    <td class="mrr-cell">${formatMoney(startup.mrr)}</td>
+                                    <td class="growth-cell">${formatGrowth(startup.growth || 0)}</td>
+                                </tr>
+                            `;
+                        }).join('')}
                     </tbody>
                 </table>
             `;
             content.innerHTML = tableHTML;
         }
+
+        async function fetchStartups() {
+            try {
+                const response = await fetch(`${API_URL}/api/startups`);
+                const result = await response.json();
+                
+                if (result.success && result.data) {
+                    renderLeaderboard(result.data);
+                } else {
+                    throw new Error('Failed to load startups');
+                }
+            } catch (error) {
+                console.error('Error fetching startups:', error);
+                const content = document.getElementById('leaderboard-content');
+                content.innerHTML = '<div class="error">Ошибка загрузки данных. Попробуйте позже.</div>';
+            }
+        }
+
         function addStartup() {
             alert('Функция добавления стартапа будет доступна после подключения API с ЮKassa и Robokassa');
         }
+
         document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => { renderLeaderboard(mockStartups); }, 800);
+            fetchStartups();
         });
     </script>
 </body>

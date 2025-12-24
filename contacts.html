@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | Real MRR</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .top-nav { padding: 20px 0; border-bottom: 1px solid #222; }
+        .top-nav a { color: #888; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .top-nav a:hover { color: #fff; }
+        .contacts-header { padding: 60px 0 40px; text-align: center; }
+        .contacts-title { font-size: 42px; font-weight: 700; margin-bottom: 20px; letter-spacing: -1px; }
+        .contacts-subtitle { font-size: 18px; color: #888; margin-bottom: 50px; }
+        .info-section {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+        .info-section h2 { font-size: 24px; font-weight: 700; margin-bottom: 20px; }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid #222;
+        }
+        .info-row:last-child { border-bottom: none; }
+        .info-label { color: #888; font-size: 14px; font-weight: 600; }
+        .info-value { color: #fff; font-size: 14px; text-align: right; }
+        .contact-btn {
+            display: inline-block;
+            background: #4ade80;
+            color: #000;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.2s;
+            margin-top: 30px;
+        }
+        .contact-btn:hover {
+            background: #22c55e;
+            transform: translateY(-2px);
+        }
+        footer {
+            text-align: center;
+            padding: 60px 0 40px;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #222;
+            margin-top: 80px;
+        }
+        footer a { color: #888; text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: #fff; }
+        @media (max-width: 768px) {
+            .contacts-title { font-size: 32px; }
+            .info-section { padding: 24px; }
+            .info-row { flex-direction: column; gap: 8px; }
+            .info-value { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <a href="index.html">← Назад на главную</a>
+        </nav>
+        <div class="contacts-header">
+            <h1 class="contacts-title">Контакты</h1>
+            <p class="contacts-subtitle">Свяжитесь с нами по любым вопросам</p>
+        </div>
+        <div class="info-section">
+            <h2>Реквизиты</h2>
+            <div class="info-row">
+                <div class="info-label">Название</div>
+                <div class="info-value">Real MRR</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">ИНН</div>
+                <div class="info-value">770181379663</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Вид деятельности</div>
+                <div class="info-value">База данных верифицированных доходов стартапов СНГ</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Верификация платежей</div>
+                <div class="info-value">ЮKassa API, Robokassa API</div>
+            </div>
+        </div>
+        <div class="info-section">
+            <h2>Связаться с нами</h2>
+            <div class="info-row">
+                <div class="info-label">Email</div>
+                <div class="info-value">contact@realmrr.ru</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Telegram</div>
+                <div class="info-value">@nopointttt</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">GitHub</div>
+                <div class="info-value">github.com/nopointttt</div>
+            </div>
+            <div style="text-align: center;">
+                <a href="mailto:contact@realmrr.ru" class="contact-btn">Написать нам</a>
+            </div>
+        </div>
+        <div class="info-section">
+            <h2>О проекте</h2>
+            <p style="color: #aaa; line-height: 1.8;">
+                Real MRR — это база верифицированных доходов стартапов из стран СНГ. Мы помогаем основателям 
+                публично делиться своими достижениями через верификацию платежей в ЮKassa и Robokassa. 
+                Все данные обновляются автоматически через API и отображаются в режиме реального времени.
+            </p>
+            <p style="color: #aaa; line-height: 1.8; margin-top: 20px;">
+                Наша цель — создать прозрачное сообщество предпринимателей, где успех измеряется реальными цифрами, 
+                а не обещаниями. Присоединяйтесь к Real MRR и покажите свой реальный доход!
+            </p>
+        </div>
+    </div>
+    <footer>
+        <p>Все доходы верифицированы через API ЮKassa/Robokassa. Данные обновляются ежечасно.</p>
+        <p style="margin-top: 20px;">
+            <a href="index.html">Главная</a> | <a href="contacts.html">Контакты</a>
+        </p>
+    </footer>
+</body>
+</html>

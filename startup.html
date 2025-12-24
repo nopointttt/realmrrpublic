@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>БыстроЧиним - 150,000 ₽/мес | Real MRR</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .top-nav { padding: 20px 0; border-bottom: 1px solid #222; }
+        .top-nav a { color: #888; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .top-nav a:hover { color: #fff; }
+        .startup-header { padding: 60px 0 40px; }
+        .startup-title { font-size: 42px; font-weight: 700; margin-bottom: 20px; letter-spacing: -1px; }
+        .startup-tagline { font-size: 20px; color: #888; margin-bottom: 30px; line-height: 1.5; }
+        .startup-description { font-size: 16px; color: #aaa; line-height: 1.7; margin-bottom: 30px; max-width: 800px; }
+        .visit-btn {
+            display: inline-block; background: #4ade80; color: #000;
+            padding: 14px 32px; border-radius: 8px; text-decoration: none;
+            font-weight: 700; font-size: 16px; transition: all 0.2s;
+        }
+        .visit-btn:hover { background: #22c55e; transform: translateY(-2px); }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; margin: 40px 0;
+        }
+        .stat-card { background: #111; border: 1px solid #222; border-radius: 12px; padding: 24px; }
+        .stat-label { font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .stat-value { font-size: 32px; font-weight: 700; color: #fff; }
+        .stat-rank { font-size: 24px; color: #666; }
+        .stat-growth { font-size: 16px; font-weight: 600; margin-top: 8px; }
+        .growth-positive { color: #4ade80; }
+        .growth-negative { color: #ef4444; }
+        .stat-note { font-size: 12px; color: #666; margin-top: 12px; }
+        .chart-section { background: #111; border: 1px solid #222; border-radius: 12px; padding: 32px; margin: 40px 0; }
+        .chart-placeholder {
+            height: 300px; display: flex; align-items: center; justify-content: center;
+            background: #0a0a0a; border-radius: 8px; color: #666; font-size: 14px;
+        }
+        .verification-note { text-align: center; color: #666; font-size: 13px; margin-top: 20px; }
+        .marketplace-section { margin: 60px 0; }
+        .section-title { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+        .section-link { color: #888; font-size: 14px; text-decoration: none; transition: color 0.2s; }
+        .section-link:hover { color: #fff; }
+        .marketplace-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px; margin-top: 30px;
+        }
+        .marketplace-card {
+            background: #111; border: 1px solid #222; border-radius: 12px;
+            padding: 24px; transition: all 0.2s;
+        }
+        .marketplace-card:hover { border-color: #333; transform: translateY(-2px); }
+        .marketplace-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+        .marketplace-card p { font-size: 14px; color: #888; line-height: 1.6; margin-bottom: 20px; }
+        .marketplace-stats {
+            display: flex; justify-content: space-between;
+            padding-top: 20px; border-top: 1px solid #222;
+        }
+        .marketplace-stat { text-align: center; }
+        .marketplace-stat-label {
+            font-size: 11px; color: #666; text-transform: uppercase;
+            letter-spacing: 0.5px; margin-bottom: 4px;
+        }
+        .marketplace-stat-value { font-size: 18px; font-weight: 700; }
+        .marketplace-revenue { color: #4ade80; }
+        .marketplace-multiple { color: #888; }
+        footer {
+            text-align: center; padding: 60px 0 40px; color: #666;
+            font-size: 14px; border-top: 1px solid #222; margin-top: 80px;
+        }
+        @media (max-width: 768px) {
+            .startup-title { font-size: 32px; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .marketplace-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <a href="index.html">← Назад к списку</a>
+        </nav>
+        <div class="startup-header">
+            <h1 class="startup-title">БыстроЧиним</h1>
+            <p class="startup-tagline">Платформа для быстрого поиска мастеров по мелкому ремонту</p>
+            <p class="startup-description">
+                Помогаем управляющим компаниям, отелям и санаториям находить проверенных специалистов для срочного мелкого ремонта. 
+                Работаем с объектами от 10-15 единиц недвижимости. Верифицированные мастера, быстрый отклик, прозрачные цены. 
+                Интеграция с ЮKassa для безопасных платежей. Модель подписки для бизнес-клиентов с гарантией качества работ.
+            </p>
+            <a href="#" class="visit-btn">Посетить сайт →</a>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Общий доход</div>
+                <div class="stat-value">1.8M ₽</div>
+                <div class="stat-rank">#1</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">MRR</div>
+                <div class="stat-value">150K ₽</div>
+                <div class="stat-growth growth-positive">+15%</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">За последние 30 дней</div>
+                <div class="stat-value">165K ₽</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Активные подписки</div>
+                <div class="stat-value">12</div>
+                <div class="stat-note">Средний чек: 12,500 ₽/мес</div>
+            </div>
+        </div>
+        <div class="chart-section">
+            <div class="chart-placeholder">График доходов появится после подключения API</div>
+            <p class="verification-note">
+                Доходы верифицированы через API ЮKassa. Последнее обновление: 24 дек 2025, 03:00
+            </p>
+        </div>
+        <section class="marketplace-section">
+            <div style="margin-bottom: 30px;">
+                <h2 class="section-title">Другие стартапы на продажу</h2>
+                <a href="#" class="section-link">Посмотреть маркетплейс →</a>
+            </div>
+            <div class="marketplace-grid">
+                <div class="marketplace-card">
+                    <h3>AISEOMate</h3>
+                    <p>AISEOMate — ваш постоянный SEO-копилот для занятых основателей. Вставьте свой сайт, добавьте конкурентов, и он превратит сырые данные в умные кластеры тем и статьи.</p>
+                    <div class="marketplace-stats">
+                        <div class="marketplace-stat">
+                            <div class="marketplace-stat-label">Доход (30д)</div>
+                            <div class="marketplace-stat-value marketplace-revenue">15K ₽</div>
+                        </div>
+                        <div class="marketplace-stat">
+                            <div class="marketplace-stat-label">Цена</div>
+                            <div class="marketplace-stat-value">25K ₽</div>
+                        </div>
+                        <div class="marketplace-stat">
+                            <div class="marketplace-stat-label">Мультипл</div>
+                            <div class="marketplace-stat-value marketplace-multiple">0.2x</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="marketplace-card">
+                    <h3>ProofWall</h3>
+                    <p>SaaS для управления отзывами и testimonials. Собирайте, модерируйте и размещайте отзывы клиентов на вашем сайте автоматически.</p>
+                    <div class="marketplace-stats">
+                        <div class="marketplace-stat">
+                            <div class="marketplace-stat-label">Доход (30д)</div>
+                            <div class="marketplace-stat-value marketplace-revenue">28K ₽</div>
+                        </div>
+                        <div class="marketplace-stat">
+                            <div class="marketplace-stat-label">Цена</div>
+                            <div class="marketplace-stat-value">85K ₽</div>
+                        </div>
+                        <div class="marketplace-stat">
+                            <div class="marketplace-stat-label">Мультипл</div>
+                            <div class="marketplace-stat-value marketplace-multiple">0.3x</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="marketplace-card">
+                    <h3>Proven Ideas</h3>
+                    <p>Украдите проверенные фичи у крупнейших компаний мира. Каждая компания на миллиард построена на десятках простых фич. Мы изолируем лучшие из них.</p>
+                    <div class="marketplace-stats">
+                        <div class="marketplace-stat">
+                            <div class="marketplace-stat-label">Доход (30д)</div>
+                            <div class="marketplace-stat-value marketplace-revenue">8K ₽</div>
+                        </div>
+                        <div class="marketplace-stat">
+                            <div class="marketplace-stat-label">Цена</div>
+                            <div class="marketplace-stat-value">15K ₽</div>
+                        </div>
+                        <div class="marketplace-stat">
+                            <div class="marketplace-stat-label">Мультипл</div>
+                            <div class="marketplace-stat-value marketplace-multiple">0.2x</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>Все доходы верифицированы через API ЮKassa/Robokassa. Данные обновляются ежечасно.</p>
+        <p style="margin-top: 20px;"><a href="index.html">← Вернуться на главную</a></p>
+    </footer>
+</body>
+</html>

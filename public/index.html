@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real MRR - База верифицированных доходов стартапов СНГ</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0f0f0f;
+            color: #fff;
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { 
+            padding: 40px 0;
+            border-bottom: 1px solid #333;
+        }
+        h1 { font-size: 3em; margin-bottom: 10px; }
+        .subtitle { color: #888; font-size: 1.2em; }
+        .leaderboard { margin-top: 40px; }
+        .startup-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .rank { 
+            font-size: 2em; 
+            font-weight: bold;
+            color: #666;
+            width: 60px;
+        }
+        .company-info { flex: 1; padding: 0 20px; }
+        .company-name { font-size: 1.3em; font-weight: 600; }
+        .founder { color: #888; margin-top: 5px; }
+        .revenue-info { text-align: right; }
+        .mrr { 
+            font-size: 1.8em; 
+            font-weight: bold;
+            color: #4ade80;
+        }
+        .total-revenue { color: #888; font-size: 0.9em; }
+        .add-startup-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4ade80;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(74, 222, 128, 0.3);
+        }
+        .add-startup-btn:hover { background: #22c55e; }
+        .loading { text-align: center; padding: 40px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💰 Real MRR</h1>
+            <p class="subtitle">База верифицированных доходов стартапов СНГ через ЮKassa и Robokassa</p>
+        </header>
+
+        <div class="leaderboard">
+            <div id="startups-list" class="loading">
+                Загрузка данных...
+            </div>
+        </div>
+    </div>
+
+    <button class="add-startup-btn" onclick="addStartup()">+ Добавить стартап</button>
+
+    <script>
+        // Временные моковые данные для демонстрации
+        const mockData = [
+            {
+                rank: 1,
+                companyName: "Пример Стартап 1",
+                founder: "@founder1",
+                website: "https://example1.com",
+                totalRevenue: "5,000,000 ₽",
+                mrr: "150,000 ₽",
+                last30Days: "180,000 ₽"
+            },
+            {
+                rank: 2,
+                companyName: "Пример Стартап 2",
+                founder: "@founder2",
+                website: "https://example2.com",
+                totalRevenue: "3,200,000 ₽",
+                mrr: "95,000 ₽",
+                last30Days: "102,000 ₽"
+            }
+        ];
+
+        function renderStartups(data) {
+            const container = document.getElementById('startups-list');
+            container.innerHTML = data.map(startup => `
+                <div class="startup-card">
+                    <div class="rank">#${startup.rank}</div>
+                    <div class="company-info">
+                        <div class="company-name">${startup.companyName}</div>
+                        <div class="founder">${startup.founder} • ${startup.website}</div>
+                    </div>
+                    <div class="revenue-info">
+                        <div class="mrr">${startup.mrr}/мес</div>
+                        <div class="total-revenue">Всего: ${startup.totalRevenue}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addStartup() {
+            alert('Функция добавления стартапа будет доступна после подключения API');
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => renderStartups(mockData), 500);
+        });
+
+        // TODO: Подключить API после развертывания бэкенда
+        // async function fetchStartups() {
+        //     const response = await fetch('/api/startups');
+        //     const data = await response.json();
+        //     renderStartups(data);
+        // }
+    </script>
+</body>
+</html>
